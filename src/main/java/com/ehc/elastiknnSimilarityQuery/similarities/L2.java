@@ -1,9 +1,9 @@
 package com.ehc.elastiknnSimilarityQuery.similarities;
 
 import com.ehc.elastiknnSimilarityQuery.ElastiknnSimilarQuery;
-import com.ehc.elastiknnSimilarityQuery.Similarity;
+import com.ehc.elastiknnSimilarityQuery.AbstractSimilarity;
 
-public class L2 extends Similarity {
+public class L2 extends AbstractSimilarity {
     public L2()
     {
         this.similarityName="l2";

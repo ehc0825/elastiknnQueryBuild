@@ -1,15 +1,49 @@
 package com.ehc.elastiknnSimilarityQuery;
 
-public abstract class Similarity
-{
-    public String similarityName;
+import com.ehc.elastiknnSimilarityQuery.similarities.Cosine;
+import com.ehc.elastiknnSimilarityQuery.similarities.L2;
+import com.ehc.elastiknnSimilarityQuery.similarities.Permutation_lsh;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public enum Similarity {
+
+    COSINE(new Cosine()){
+        @Override
+        public String toString() {
+            return "cosine";
+        }
+    },
+    L2(new L2()){
+        @Override
+        public String toString() {
+            return "l2";
+        }
+    },
+    PERMUTATION_LSH(new Permutation_lsh()){
+        @Override
+        public String toString() {
+            return "permutation_lsh";
+        }
+    };
+
+    private AbstractSimilarity abstractSimilarity;
+    Similarity(AbstractSimilarity abstractSimilarity)
+    {
+        this.abstractSimilarity = abstractSimilarity;
+    }
 
     /**
-     * @param from int
-     * @param size int
-     * @param fieldName fieldNameMapping type ElastiKnn vector
-     * @param vector vectorArray for ElastiKnn
-     * @return elastiknn Simlarity Query FirstPart
+     * Similarity이름과 Similarity 세트를 Map형태로 return
      */
-    public abstract String queryForSimilarity(int from, int size,String fieldName , String[] vector);
+    public static Map<String, AbstractSimilarity> getSimilarityMap(){
+        Map<String, AbstractSimilarity> similarityMap= new HashMap<>();
+        for(Similarity similarity: Similarity.values())
+        {
+            similarityMap.put(similarity.abstractSimilarity.similarityName,similarity.abstractSimilarity);
+        }
+        return similarityMap;
+    }
+
 }

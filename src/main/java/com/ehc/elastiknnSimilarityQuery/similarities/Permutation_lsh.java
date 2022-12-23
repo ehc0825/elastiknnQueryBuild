@@ -1,9 +1,9 @@
 package com.ehc.elastiknnSimilarityQuery.similarities;
 
 import com.ehc.elastiknnSimilarityQuery.ElastiknnSimilarQuery;
-import com.ehc.elastiknnSimilarityQuery.Similarity;
+import com.ehc.elastiknnSimilarityQuery.AbstractSimilarity;
 
-public class Permutation_lsh extends Similarity {
+public class Permutation_lsh extends AbstractSimilarity {
 
     public Permutation_lsh()
     {

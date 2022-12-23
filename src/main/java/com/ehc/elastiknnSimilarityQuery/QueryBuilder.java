@@ -9,11 +9,11 @@ public class QueryBuilder {
      * @param size int
      * @param fieldName fieldNameMapping type ElastiKnn vector
      * @param vector vectorArray for ElastiKnn
-     * @return e해당 similarityName에 맞는 ImageSearchQuery를 return
+     * @return 해당 similarityName에 맞는 ImageSearchQuery를 return
      */
-    public static String buildKnnQuery(SimilarityOption similarityOption,String fieldName,int from,int size, String[] vector)
+    public static String buildKnnQuery(Similarity similarity, String fieldName, int from, int size, String[] vector)
     {
-        Map<String, Similarity> similarityMap=Similarities.getSimilarityMap();
-        return similarityMap.get(similarityOption.toString()).queryForSimilarity(from,size,fieldName,vector);
+        Map<String, AbstractSimilarity> similarityMap= Similarity.getSimilarityMap();
+        return similarityMap.get(similarity.toString()).queryForSimilarity(from,size,fieldName,vector);
     }
 }
