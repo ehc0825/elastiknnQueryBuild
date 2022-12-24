@@ -1,5 +1,6 @@
 package com.ehc.elastiknnSimilarityQuery;
 
+import com.ehc.elastiknnSimilarityQuery.similarities.dto.Option;
 import org.elasticsearch.common.xcontent.XContentBuilder;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ public abstract class AbstractSimilarity
      * @param vector vectorArray for ElastiKnn
      * @return elastiknn Simlarity Query FirstPart
      */
-    public abstract String queryForSimilarity(int from, int size,String fieldName , String[] vector);
+    public abstract String queryForSimilarity(int from, int size, String fieldName, String[] vector, Option option);
 
-    public abstract void buildKnnQueryBySimilarity(XContentBuilder builder) throws IOException;
+    public abstract void buildKnnQueryBySimilarity(XContentBuilder builder, Option option) throws IOException;
 }

@@ -28,50 +28,53 @@ public class ElastiknnSimilarQuery {
      * elasticsearch search QueryForCosine
      * @return cosineQueryLastPart
      */
-    public static String basedTailQueryForCosine(){
+    public static String basedTailQueryForCosine(int candidates){
         String query=
                 "      },\n" +
-                "\"model\":\"lsh\","+
-                "\"similarity\":\"angular\","+
-                "\"candidates\":50"+
-                "    }\n" +
-                "  }\n" +
-                "}";
+                        "\"model\":\"lsh\","+
+                        "\"similarity\":\"angular\","+
+                        "\"candidates\":"+candidates+
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
         return query;
     }
 
 
+
     /**
      * elasticsearch search QueryForL2
+     *  option parameter Candidates,probes
      * @return L2QueryLastPart
      */
-    public static String basedTailQueryForL2(){
+    public static String basedTailQueryForL2(int candidates,int probes){
         String query=
                 "      },\n" +
-                "\"model\":\"lsh\","+
-                "\"similarity\":\"l2\","+
-                "\"candidates\":50,"+
-                "\"probes\":2"+
-                "    }\n" +
-                "  }\n" +
-                "}";
+                        "\"model\":\"lsh\","+
+                        "\"similarity\":\"l2\","+
+                        "\"candidates\":"+candidates+","+
+                        "\"probes\":"+probes+
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
         return query;
     }
 
 
     /**
      * elasticsearch search QueryForL2
+     * option parameter Candidates,probes
      * @return Permutation_lshQueryLastPart
      */
-    public static String basedTailQueryForPermutation_lsh(){
+    public static String basedTailQueryForPermutation_lsh(int candidates){
         String query=
                 "      },\n" +
-                "\"model\":\"permutation_lsh\","+
-                "\"similarity\":\"angular\","+
-                "\"candidates\":50"+
-                "    }\n" +
-                "  }\n" +
-                "}";
+                        "\"model\":\"permutation_lsh\","+
+                        "\"similarity\":\"angular\","+
+                        "\"candidates\":"+candidates+
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
         return query;
     }
 
