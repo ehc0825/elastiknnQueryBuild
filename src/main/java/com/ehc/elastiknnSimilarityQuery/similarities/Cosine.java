@@ -21,7 +21,8 @@ public class Cosine extends AbstractSimilarity {
 
     @Override
     public void buildKnnQueryBySimilarity(XContentBuilder builder) throws IOException {
-        builder.field("similarity","angular");
-        builder.field("candidates",50);
+        builder.field(MODEL,DEFAULT_MODEL);
+        builder.field(SIMILARITY,ANGULAR);
+        builder.field(CANDIDATES,50);
     }
 }

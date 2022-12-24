@@ -9,7 +9,7 @@ import java.io.IOException;
 public class L2 extends AbstractSimilarity {
     public L2()
     {
-        this.similarityName="l2";
+        this.similarityName=L2;
     }
     @Override
     public String queryForSimilarity(int from, int size, String fieldName, String[] vector) {
@@ -20,8 +20,9 @@ public class L2 extends AbstractSimilarity {
 
     @Override
     public void buildKnnQueryBySimilarity(XContentBuilder builder) throws IOException {
-        builder.field("similarity",similarityName);
-        builder.field("candidates",50);
-        builder.field("probes",2);
+        builder.field(MODEL,DEFAULT_MODEL);
+        builder.field(SIMILARITY,L2);
+        builder.field(CANDIDATES,50);
+        builder.field(PROBES,2);
     }
 }

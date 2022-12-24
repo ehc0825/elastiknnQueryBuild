@@ -10,7 +10,7 @@ public class Permutation_lsh extends AbstractSimilarity {
 
     public Permutation_lsh()
     {
-        this.similarityName="permutation_lsh";
+        this.similarityName=PERMUTATION_LSH;
     }
     @Override
     public String queryForSimilarity(int from, int size, String fieldName, String[] vector) {
@@ -21,8 +21,8 @@ public class Permutation_lsh extends AbstractSimilarity {
 
     @Override
     public void buildKnnQueryBySimilarity(XContentBuilder builder) throws IOException {
-        builder.field(MODEL,similarityName);
-        builder.field("similarity",DEFAULT_MODEL);
-        builder.field("candidates",50);
+        builder.field(MODEL,PERMUTATION_LSH);
+        builder.field(SIMILARITY,ANGULAR);
+        builder.field(CANDIDATES,50);
     }
 }
