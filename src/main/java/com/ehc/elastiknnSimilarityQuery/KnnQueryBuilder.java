@@ -141,29 +141,17 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
     /**
      * @param from int
      * @param size int
-     * @param fieldName fieldNameMapping type ElastiKnn vector
-     * @param vector vectorArray for ElastiKnn
      * @return 해당 similarityName에 맞는 ImageSearchQuery를 return
      */
-    public static String buildStringKnnQuery(Similarity similarity, String fieldName, int from, int size, String[] vector)
-    {
-        Option option=new Option();
-        return getQueryString(similarity, fieldName, from, size, vector, option);
-    }
-
-    public static String buildStringKnnQuery(Similarity similarity, String fieldName, int from, int size, String[] vector, int candidates)
-    {
-        Option option=new Option();
-        option.setCandidates(candidates);
-        return getQueryString(similarity, fieldName, from, size, vector, option);
-    }
-    public static String buildStringKnnQuery(Similarity similarity, String fieldName, int from, int size, String[] vector, int candidates,int probes)
+    public String getStringKnnQuery(int from, int size)
     {
         Option option=new Option();
         option.setCandidates(candidates);
         option.setProbes(probes);
-        return getQueryString(similarity, fieldName, from, size, vector, option);
+        return getQueryString(similarity, fieldName, from, size, value, option);
     }
+
+
     private static String getQueryString(Similarity similarity, String fieldName, int from, int size, String[] vector, Option option) {
         Map<String, AbstractSimilarity> similarityMap= Similarity.getSimilarityMap();
         return similarityMap.get(similarity.toString()).queryForSimilarity(from, size, fieldName, vector, option);
