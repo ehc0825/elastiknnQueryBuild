@@ -12,6 +12,7 @@ public abstract class AbstractSimilarity
     public static final String SIMILARITY = "similarity";
     public static final String ANGULAR="angular";
     public static final String L2="l2";
+    public static final String EXACT="exact";
     public static final String PERMUTATION_LSH="permutation_lsh";
     public static final String CANDIDATES="candidates";
     public static final String PROBES="probes";

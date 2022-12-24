@@ -1,6 +1,7 @@
 package com.ehc.elastiknnSimilarityQuery;
 
 import com.ehc.elastiknnSimilarityQuery.similarities.Cosine;
+import com.ehc.elastiknnSimilarityQuery.similarities.Exact;
 import com.ehc.elastiknnSimilarityQuery.similarities.L2;
 import com.ehc.elastiknnSimilarityQuery.similarities.Permutation_lsh;
 
@@ -25,6 +26,12 @@ public enum Similarity {
         @Override
         public String toString() {
             return "permutation_lsh";
+        }
+    },
+    EXACT(new Exact()){
+        @Override
+        public String toString() {
+            return "exact";
         }
     };
 

@@ -19,13 +19,16 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
 
     public static final String NAME = "elastiknn_nearest_neighbors";
     public static final String FIELD = "field";
-    public static final String DEFAULT_MODEL = "lsh";
     public static final String VALUE_FIELD_NAME = "values";
-    public static final String MODEL = "model";
     public static final ParseField VEC = new ParseField("vec");
     private final String fieldName;
     private final Similarity similarity;
     private final String[] value;
+
+    /**
+     * fiendName: elastiknn 으로 맵핑된 필드명
+     * similarity: 사용할 유사도(cosine,l2, permutation_lsh,exact)
+     */
     public KnnQueryBuilder(String fieldName,Similarity similarity, String[] value) {
         if (fieldName == null) {
             throw new IllegalArgumentException("[" + NAME + "] requires fieldName");

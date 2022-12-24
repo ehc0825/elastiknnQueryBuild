@@ -77,6 +77,21 @@ public class ElastiknnSimilarQuery {
 
 
     /**
+     * elasticsearch search QueryForL2
+     * @return Permutation_lshQueryLastPart
+     */
+    public static String basedTailQueryForExact(){
+        String query=
+                "      },\n" +
+                        "\"model\":\"exact\","+
+                        "\"similarity\":\"(angular | l2)\""+
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        return query;
+    }
+
+    /**
      * @param vectors String array for elastiknn vectorField
      * @return vector for searchElastiknn
      */
