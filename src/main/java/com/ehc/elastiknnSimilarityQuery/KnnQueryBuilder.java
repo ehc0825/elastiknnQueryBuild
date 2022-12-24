@@ -143,7 +143,7 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
      * @param size int
      * @return 해당 similarityName에 맞는 ImageSearchQuery를 return
      */
-    public String getStringKnnQuery(int from, int size)
+    public String toString(int from, int size)
     {
         Option option=new Option();
         option.setCandidates(candidates);
