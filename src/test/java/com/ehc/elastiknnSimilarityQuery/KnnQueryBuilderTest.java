@@ -1,7 +1,7 @@
 package com.ehc.elastiknnSimilarityQuery;
 
 
-import org.elasticsearch.index.query.QueryBuilder;
+import com.ehc.elastiknnSimilarityQuery.query.KnnQueryBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.jupiter.api.Test;
 

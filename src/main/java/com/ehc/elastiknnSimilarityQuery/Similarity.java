@@ -5,6 +5,7 @@ import com.ehc.elastiknnSimilarityQuery.similarities.Exact;
 import com.ehc.elastiknnSimilarityQuery.similarities.L2;
 import com.ehc.elastiknnSimilarityQuery.similarities.Permutation_lsh;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +52,13 @@ public enum Similarity {
             similarityMap.put(similarity.abstractSimilarity.similarityName,similarity.abstractSimilarity);
         }
         return similarityMap;
+    }
+
+    public static Similarity find(String similarityName) {
+        return Arrays.stream(values())
+                .filter(similarity -> similarity.toString().equals(similarityName))
+                .findAny()
+                .orElse(EXACT);
     }
 
 }

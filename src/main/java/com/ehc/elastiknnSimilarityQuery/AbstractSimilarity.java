@@ -19,14 +19,5 @@ public abstract class AbstractSimilarity
     public static final String PROBES="probes";
 
 
-    /**
-     * @param from int
-     * @param size int
-     * @param fieldName fieldNameMapping type ElastiKnn vector
-     * @param vector vectorArray for ElastiKnn
-     * @return elastiknn Simlarity Query FirstPart
-     */
-    public abstract String queryForSimilarity(int from, int size, String fieldName, String[] vector, Option option);
-
     public abstract void buildKnnQueryBySimilarity(XContentBuilder builder, Option option) throws IOException;
 }

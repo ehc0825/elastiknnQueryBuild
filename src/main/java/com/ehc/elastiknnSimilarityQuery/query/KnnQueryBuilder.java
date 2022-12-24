@@ -1,5 +1,7 @@
-package com.ehc.elastiknnSimilarityQuery;
+package com.ehc.elastiknnSimilarityQuery.query;
 
+import com.ehc.elastiknnSimilarityQuery.AbstractSimilarity;
+import com.ehc.elastiknnSimilarityQuery.Similarity;
 import com.ehc.elastiknnSimilarityQuery.similarities.dto.Option;
 import org.apache.lucene.search.Query;
 import org.elasticsearch.common.ParseField;
@@ -138,23 +140,5 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
     }
 
 
-    /**
-     * @param from int
-     * @param size int
-     * @return 해당 similarityName에 맞는 ImageSearchQuery를 return
-     */
-    public String toString(int from, int size)
-    {
-        Option option=new Option();
-        option.setCandidates(candidates);
-        option.setProbes(probes);
-        return getQueryString(similarity, fieldName, from, size, value, option);
-    }
-
-
-    private static String getQueryString(Similarity similarity, String fieldName, int from, int size, String[] vector, Option option) {
-        Map<String, AbstractSimilarity> similarityMap= Similarity.getSimilarityMap();
-        return similarityMap.get(similarity.toString()).queryForSimilarity(from, size, fieldName, vector, option);
-    }
 
 }
