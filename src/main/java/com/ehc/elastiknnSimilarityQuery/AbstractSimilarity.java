@@ -1,9 +1,14 @@
 package com.ehc.elastiknnSimilarityQuery;
 
+import org.elasticsearch.common.xcontent.XContentBuilder;
+
+import java.io.IOException;
+
 public abstract class AbstractSimilarity
 {
     public String similarityName;
-
+    public static final String MODEL = "model";
+    public static final String DEFAULT_MODEL = "lsh";
     /**
      * @param from int
      * @param size int
@@ -12,4 +17,6 @@ public abstract class AbstractSimilarity
      * @return elastiknn Simlarity Query FirstPart
      */
     public abstract String queryForSimilarity(int from, int size,String fieldName , String[] vector);
+
+    public abstract void buildKnnQueryBySimilarity(XContentBuilder builder) throws IOException;
 }
