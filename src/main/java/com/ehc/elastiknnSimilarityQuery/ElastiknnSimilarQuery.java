@@ -84,7 +84,7 @@ public class ElastiknnSimilarQuery {
         String query=
                 "      },\n" +
                         "\"model\":\"exact\","+
-                        "\"similarity\":\"(angular | l2)\""+
+                        "\"similarity\":\"angular\""+
                         "    }\n" +
                         "  }\n" +
                         "}";
