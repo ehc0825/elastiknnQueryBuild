@@ -112,8 +112,7 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
         builder.endObject();
     }
     protected void buildBySimilarity(XContentBuilder builder, Similarity similarity, Option option) throws IOException {
-        Map<String, AbstractSimilarity> similarityMap= Similarity.getSimilarityMap();
-        similarityMap.get(similarity.toString()).buildKnnQueryBySimilarity(builder,option);
+        Similarity.find(similarity.toString()).getAbstractSimilarity().buildKnnQueryBySimilarity(builder,option);
     }
 
     @Override

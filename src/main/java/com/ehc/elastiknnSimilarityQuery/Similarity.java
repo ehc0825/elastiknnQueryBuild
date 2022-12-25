@@ -42,16 +42,9 @@ public enum Similarity {
         this.abstractSimilarity = abstractSimilarity;
     }
 
-    /**
-     * Similarity이름과 Similarity 세트를 Map형태로 return
-     */
-    public static Map<String, AbstractSimilarity> getSimilarityMap(){
-        Map<String, AbstractSimilarity> similarityMap= new HashMap<>();
-        for(Similarity similarity: Similarity.values())
-        {
-            similarityMap.put(similarity.abstractSimilarity.similarityName,similarity.abstractSimilarity);
-        }
-        return similarityMap;
+    public AbstractSimilarity getAbstractSimilarity()
+    {
+       return abstractSimilarity;
     }
 
     public static Similarity find(String similarityName) {
