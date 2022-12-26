@@ -1,6 +1,5 @@
 package com.ehc.elastiknnSimilarityQuery.query;
 
-import com.ehc.elastiknnSimilarityQuery.AbstractSimilarity;
 import com.ehc.elastiknnSimilarityQuery.Similarity;
 import com.ehc.elastiknnSimilarityQuery.similarities.dto.Option;
 import org.apache.lucene.search.Query;
@@ -11,7 +10,6 @@ import org.elasticsearch.common.xcontent.XContentBuilder;
 import org.elasticsearch.index.query.*;
 
 import java.io.IOException;
-import java.util.Map;
 import java.util.Objects;
 
 public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
