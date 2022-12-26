@@ -6,8 +6,7 @@ import com.ehc.elastiknnSimilarityQuery.similarities.L2;
 import com.ehc.elastiknnSimilarityQuery.similarities.Permutation_lsh;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+
 
 public enum Similarity {
 
