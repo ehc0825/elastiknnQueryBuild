@@ -1,8 +1,25 @@
 # elastiknnQueryBuild
-elastiknnQueryBuild 라이브러리화
+elastiknnQueryBuild
 
 Java RestHighLevelClient QueryBuilder
 For ElastiKnn(https://elastiknn.com/)
+
+
+
+use in gradle
+
+add build.gradle
+repositories {
+	...
+	maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+	...
+	implementation 'com.github.ehc0825:elastiknnQueryBuild:7.10.2-oss'
+	...
+}
+
 
 elasticsearch oss 7.10.2
 
