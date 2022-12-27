@@ -1,6 +1,8 @@
 plugins {
     id 'java'
+    id 'maven-publish'
 }
+apply plugin: 'maven-publish'
 
 group 'org.hc'
 version '7.10.2'
@@ -18,4 +20,16 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/ehc0825/elastiknnQueryBuild"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
