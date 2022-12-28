@@ -1,12 +1,12 @@
 # elastiknnQueryBuild
-##elastiknnQueryBuild
+## elastiknnQueryBuild
 
-##Java RestHighLevelClient QueryBuilder
+## Java RestHighLevelClient QueryBuilder
 For ElastiKnn(https://elastiknn.com/)
 
 
 
-##use in gradle
+## use in gradle
 
 1. add build.gradle
 ```
@@ -24,12 +24,12 @@ dependencies {
 ```
 
 
-##support
+## support
 elasticsearch oss 7.10.2
 
 
 
-##use this
+## use this
 ```
 KnnQueryBuilder(String fieldName,Similarity similarity, String[] value)
 ```
@@ -43,7 +43,7 @@ KnnQueryBuilder(String fieldName,Similarity similarity, String[] value,int candi
 ```
 
 
-###[value]
+### [value]
 fieldName : field Name type elastiknn_dense_float_vector   
 similarity: similarity Type cosine, l2, permutation_lsh, exact   
 value: vector   
