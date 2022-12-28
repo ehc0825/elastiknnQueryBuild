@@ -28,7 +28,7 @@ dependencies {
 
 
 ## support
-elasticsearch oss 7.10.2
+elasticsearch oss 7.5.2
 
 
 
