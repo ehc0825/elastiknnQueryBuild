@@ -11,7 +11,7 @@ class KnnQueryBuilderTest {
     public void queryBuildTest()
     {
         String[] vector={"0.9217332601547241", "1.523964524269104", "1.6131728887557983", "1.0742337703704834", "0.26549723744392395", "0.2835127115249634", "0.04264784976840019"};
-        KnnQueryBuilder knnQueryBuilder=new KnnQueryBuilder("vector",Similarity.EXACT,vector,15,3);
+        KnnQueryBuilder knnQueryBuilder=new KnnQueryBuilder("vector", Similarity_Type.EXACT,vector,15,3);
         SearchSourceBuilder searchSourceBuilder= new SearchSourceBuilder();
         searchSourceBuilder.query(knnQueryBuilder);
         searchSourceBuilder.from(0);
@@ -22,7 +22,7 @@ class KnnQueryBuilderTest {
     public void findTest()
     {
         String[] vector={"0.9217332601547241", "1.523964524269104", "1.6131728887557983", "1.0742337703704834", "0.26549723744392395", "0.2835127115249634", "0.04264784976840019"};
-        KnnQueryBuilder knnQueryBuilder=new KnnQueryBuilder("vector",Similarity.find("exact"),vector);
+        KnnQueryBuilder knnQueryBuilder=new KnnQueryBuilder("vector", Similarity_Type.find("exact"),vector);
         SearchSourceBuilder searchSourceBuilder= new SearchSourceBuilder();
         searchSourceBuilder.query(knnQueryBuilder);
         searchSourceBuilder.from(0);

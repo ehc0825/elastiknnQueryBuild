@@ -1,6 +1,6 @@
 package com.ehc.elastiknnSimilarityQuery.query;
 
-import com.ehc.elastiknnSimilarityQuery.Similarity;
+import com.ehc.elastiknnSimilarityQuery.Similarity_Type;
 import com.ehc.elastiknnSimilarityQuery.similarities.dto.Option;
 import org.apache.lucene.search.Query;
 import org.elasticsearch.common.ParseField;
@@ -20,7 +20,7 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
     public static final String VALUE_FIELD_NAME = "values";
     public static final ParseField VEC = new ParseField("vec");
     private static String fieldName;
-    private static Similarity similarity;
+    private static Similarity_Type similarityType;
     private static String[] value;
     private static int candidates=50;
     private static int probes=2;
@@ -30,35 +30,35 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
      * fiendName: elastiknn 으로 맵핑된 필드명
      * similarity: 사용할 유사도(cosine,l2, permutation_lsh,exact)
      */
-    public KnnQueryBuilder(String fieldName,Similarity similarity, String[] value) {
-        defaultKnnquery(fieldName, similarity, value);
+    public KnnQueryBuilder(String fieldName, Similarity_Type similarityType, String[] value) {
+        defaultKnnquery(fieldName, similarityType, value);
     }
 
-    private void defaultKnnquery(String fieldName, Similarity similarity, String[] value) {
+    private void defaultKnnquery(String fieldName, Similarity_Type similarityType, String[] value) {
         if (fieldName == null) {
             throw new IllegalArgumentException("[" + NAME + "] requires fieldName");
         }
-        if (similarity == null) {
+        if (similarityType == null) {
             throw new IllegalArgumentException("[" + NAME + "] requires similarity");
         }
         if (value == null) {
             throw new IllegalArgumentException("[" + NAME + "] requires query value");
         }
-        this.similarity= similarity;
+        this.similarityType = similarityType;
         this.fieldName = fieldName;
         this.value = value;
     }
 
-    public KnnQueryBuilder(String fieldName,Similarity similarity, String[] value,int candidates) {
-      defaultKnnquery(fieldName,similarity,value);
+    public KnnQueryBuilder(String fieldName, Similarity_Type similarityType, String[] value, int candidates) {
+      defaultKnnquery(fieldName, similarityType,value);
         if (candidates == 0) {
             throw new IllegalArgumentException("[" + NAME + "] requires candidates do not use zero");
         }
         this.candidates=candidates;
     }
 
-    public KnnQueryBuilder(String fieldName,Similarity similarity, String[] value,int candidates,int probes) {
-       defaultKnnquery(fieldName,similarity,value);
+    public KnnQueryBuilder(String fieldName, Similarity_Type similarityType, String[] value, int candidates, int probes) {
+       defaultKnnquery(fieldName, similarityType,value);
         if (candidates == 0) {
             throw new IllegalArgumentException("[" + NAME + "] requires candidates do not use zero");
         }
@@ -71,7 +71,7 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
     public KnnQueryBuilder(StreamInput in) throws IOException{
         super(in);
         fieldName=in.readString();
-        similarity= in.readEnum(Similarity.class);
+        similarityType = in.readEnum(Similarity_Type.class);
         value=in.readOptionalStringArray();
         candidates=in.readInt();
         probes=in.readInt();
@@ -79,7 +79,7 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
     @Override
     protected void doWriteTo(StreamOutput out) throws IOException {
         out.writeString(fieldName);
-        out.writeEnum(similarity);
+        out.writeEnum(similarityType);
         out.writeGenericValue(value);
         out.writeInt(candidates);
         out.writeInt(probes);
@@ -87,8 +87,8 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
     public String fieldName() {
         return this.fieldName;
     }
-    public Similarity similarity() {
-        return this.similarity;
+    public Similarity_Type similarity() {
+        return this.similarityType;
     }
     public String[] value() {
         return this.value;
@@ -106,11 +106,11 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
         Option option=new Option();
         option.setCandidates(candidates);
         option.setProbes(probes);
-        buildBySimilarity(builder,similarity,option);
+        buildBySimilarity(builder, similarityType,option);
         builder.endObject();
     }
-    protected void buildBySimilarity(XContentBuilder builder, Similarity similarity, Option option) throws IOException {
-        similarity.getAbstractSimilarity().buildKnnQueryBySimilarity(builder,option);
+    protected void buildBySimilarity(XContentBuilder builder, Similarity_Type similarityType, Option option) throws IOException {
+        similarityType.getAbstractSimilarity().buildKnnQueryBySimilarity(builder,option);
     }
 
     @Override
