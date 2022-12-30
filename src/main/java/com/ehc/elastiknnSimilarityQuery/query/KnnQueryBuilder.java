@@ -1,5 +1,6 @@
 package com.ehc.elastiknnSimilarityQuery.query;
 
+
 import com.ehc.elastiknnSimilarityQuery.SimilarityType;
 import com.ehc.elastiknnSimilarityQuery.similarities.dto.Option;
 import org.apache.lucene.search.Query;
@@ -30,6 +31,7 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
      * fiendName: elastiknn 으로 맵핑된 필드명
      * similarity: 사용할 유사도(cosine,l2, permutation_lsh,exact)
      */
+
     public KnnQueryBuilder(String fieldName, SimilarityType similarityType, String[] value) {
         defaultKnnquery(fieldName, similarityType, value);
     }
@@ -56,6 +58,7 @@ public class KnnQueryBuilder extends AbstractQueryBuilder<KnnQueryBuilder>{
         }
         this.candidates=candidates;
     }
+
 
     public KnnQueryBuilder(String fieldName, SimilarityType similarityType, String[] value, int candidates, int probes) {
        defaultKnnquery(fieldName, similarityType,value);
