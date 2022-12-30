@@ -8,7 +8,7 @@ import com.ehc.elastiknnSimilarityQuery.similarities.Permutation_lsh;
 import java.util.Arrays;
 
 
-public enum Similarity {
+public enum SimilarityType {
 
     COSINE(new Cosine()){
         @Override
@@ -35,8 +35,8 @@ public enum Similarity {
         }
     };
 
-    private AbstractSimilarity abstractSimilarity;
-    Similarity(AbstractSimilarity abstractSimilarity)
+    private final AbstractSimilarity abstractSimilarity;
+    SimilarityType(AbstractSimilarity abstractSimilarity)
     {
         this.abstractSimilarity = abstractSimilarity;
     }
@@ -46,9 +46,9 @@ public enum Similarity {
        return abstractSimilarity;
     }
 
-    public static Similarity find(String similarityName) {
+    public static SimilarityType find(String similarityName) {
         return Arrays.stream(values())
-                .filter(similarity -> similarity.toString().equals(similarityName))
+                .filter(similarityType -> similarityType.toString().equals(similarityName))
                 .findAny()
                 .orElse(EXACT);
     }
