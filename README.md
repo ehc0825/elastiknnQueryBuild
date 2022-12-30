@@ -28,30 +28,30 @@ dependencies {
 
 
 ## support
-elasticsearch oss 7.10.2
+elasticsearch oss 7.5.2
 
 
 
 ## use this
 1. 
 ```
-KnnQueryBuilder(String fieldName,Similarity similarity, String[] value)
+KnnQueryBuilder(String fieldName, SimilarityType similarityType, String[] value)
 ```
 2. 
 
 ```
-KnnQueryBuilder(String fieldName,Similarity similarity, String[] value,int candidates)
+KnnQueryBuilder(String fieldName, SimilarityType similarityType, String[] value,int candidates)
 ```
 3. 
 
 ```
-KnnQueryBuilder(String fieldName,Similarity similarity, String[] value,int candidates,int probes)
+KnnQueryBuilder(String fieldName, SimilarityType similarityType, String[] value,int candidates,int probes)
 ```
 
 
 ### [value]
 fieldName : field Name type elastiknn_dense_float_vector   
-similarity: similarity Type cosine, l2, permutation_lsh, exact   
+similarityType: similarity Type cosine, l2, permutation_lsh, exact   
 value: vector   
 candidates: int candidates (default 50)   
 probes: int probes (default 2)   
